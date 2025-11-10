@@ -20,3 +20,4 @@ Hybrid meta-OS (Rogers + Pewpi vector runtime).
 
 ## Phase-5 Infinity Deck Sun Nov  9 21:46:15 CST 2025
 - Added /deck folder and quantum vector engine.
+\nPortal available at /portal/index.html
