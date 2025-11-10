@@ -1,64 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
-<title>Osprey Portal / App Builder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦅 Osprey Portal / Infinity App Builder</title>
 <style>
-html,body{margin:0;background:#050510;color:#0ff;font-family:monospace;overflow-x:hidden}
-h1{color:#38bdf8;text-align:center;margin-top:20px;}
-.panel{max-width:600px;margin:20px auto;padding:20px;border-radius:16px;
-background:rgba(15,23,42,.4);box-shadow:0 0 20px rgba(56,189,248,.3);}
-button,a.btn{background:#38bdf8;color:#000;font-weight:bold;padding:10px 18px;
-border:none;border-radius:8px;margin:5px;cursor:pointer;text-decoration:none;display:inline-block;}
-button:hover,a.btn:hover{background:#7ff;}
-.glow{box-shadow:0 0 25px #0ff;}
+body{margin:0;font-family:system-ui,sans-serif;background:#020611;color:#0ff;text-align:center;}
+h1{color:#32baff;margin-top:30px}
+.container{max-width:700px;margin:auto;padding:20px;background:#0b1220;border-radius:20px;box-shadow:0 0 30px #00f4ff30;}
+input,button{font-size:1em;border:none;border-radius:10px;padding:10px 15px;margin:8px;}
+input{width:60%}
+button{background:#09f;color:#fff;cursor:pointer;transition:.2s;}
+button:hover{background:#0070f3}
+.section{margin-top:30px}
+.app-buttons button{display:inline-block;margin:10px 8px}
+footer{margin-top:40px;color:#066;font-size:.9em}
+iframe{width:100%;max-width:680px;height:400px;border:none;border-radius:12px;background:#000;}
 </style>
 </head>
 <body>
-<h1>🪶 Osprey Portal / App Builder</h1>
 
-<div class="panel">
+<h1>🦅 Osprey Portal / Infinity App Builder</h1>
+
+<div class="container">
   <h2>Create Your Own App Page</h2>
-  <p>Type an idea or select a suggestion to start building a unique application.</p>
-  <input id="idea" placeholder="Describe your idea…" style="width:70%;padding:6px;border-radius:6px;border:none;outline:none;"/>
-  <button id="build">Build</button>
-</div>
+  <p>Type an idea or select a suggestion to start building.</p>
+  <input id="idea" placeholder="Describe your idea..." />
+  <button onclick="alert('AI Builder coming soon')">Build</button>
 
-<div class="panel">
-  <h3>Need inspiration?</h3>
-  <div id="buttons">
-    <button id="signalBtn" class="glow">Signal Generator</button>
-  <button id="quantumBtn">Quantum Visualizer</button>
-    <button id="voiceBtn">Voice Recorder</button>
-    <button id="musicBtn">Music Synth</button>
-    <button id="coinBtn">Coin Catalog</button>
-    <button id="marketBtn">Marketplace Listing</button>
-    <button id="storyBtn">Story Writer</button>
-    <button id="gemBtn">Gemstone Designer</button>
-    <button id="aiBtn">AI Chat Bot</button>
-    <button id="weatherBtn">Weather Monitor</button>
+  <div class="section">
+    <h3>Need inspiration?</h3>
+    <div class="app-buttons">
+      <button id="signalBtn">Signal Generator</button>
+      <button id="voiceBtn">Voice Recorder</button>
+      <button id="quantumBtn">Quantum Visualizer</button>
+      <button id="storyBtn">Story Writer</button>
+      <button id="graveBtn">Graveyard Game</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>New App Created 🎉</h3>
+    <p>// select a template above to begin</p>
   </div>
 </div>
 
-<div class="panel">
-  <h3>New App Created 🎉</h3>
-  <pre id="output">// select a template above to begin</pre>
+<div id="viewer" style="display:none;margin-top:30px;">
+  <h3 id="viewerTitle"></h3>
+  <iframe id="viewerFrame"></iframe><br>
+  <button onclick="closeViewer()">⬅ Back to App Builder</button>
 </div>
 
+<footer>
+  Powered by Infinity AI · Osprey-4.0
+</footer>
 
-
-<!-- QV-HANDLER START -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const s = document.getElementById('signalBtn');
-  if (s) s.onclick = () => { window.location.href = 'signal_generator.html'; };
-
-  const q = document.getElementById('quantumBtn');
-  if (q) q.onclick = () => { window.location.href = 'quantum_visualizer.html'; };
+const routes={
+  signalBtn:'signal_generator.html',
+  quantumBtn:'quantum_visualizer.html',
+  voiceBtn:'voice_recorder.html',
+  storyBtn:'story_writer.html',
+  graveBtn:'../graveyard/game/night_extended.html'
+};
+function openApp(id){
+  const page=routes[id];
+  if(!page)return;
+  document.querySelector('.container').style.display='none';
+  document.getElementById('viewer').style.display='block';
+  document.getElementById('viewerTitle').textContent=document.getElementById(id).textContent;
+  document.getElementById('viewerFrame').src=page;
+}
+function closeViewer(){
+  document.getElementById('viewer').style.display='none';
+  document.querySelector('.container').style.display='block';
+  document.getElementById('viewerFrame').src='';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  Object.keys(routes).forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.onclick=()=>openApp(id);
+  });
 });
 </script>
-<!-- QV-HANDLER END -->
 
 </body>
 </html>
