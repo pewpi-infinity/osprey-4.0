@@ -1,39 +1,39 @@
-// 🚀 Osprey Portal App-Builder Logic
-const suggestions = [
- "Signal Generator",
- "Quantum Visualizer",
- "Voice Recorder",
- "Music Synth",
- "Coin Catalog",
- "Marketplace Listing",
- "Story Writer",
- "Gemstone Designer",
- "AI Chat Bot",
- "Weather Monitor"
+// 🚀  Osprey Portal App-Builder Logic  (patched)
+const ideas = [
+ "Signal Generator","Quantum Visualizer","Voice Recorder","Music Synth",
+ "Coin Catalog","Marketplace Listing","Story Writer","Gemstone Designer",
+ "AI Chat Bot","Weather Monitor"
 ];
 
-const buttons = document.getElementById("ideaButtons");
-suggestions.forEach(s =>{
-  const b=document.createElement("button");
-  b.textContent=s;
-  b.onclick=()=>buildTemplate(s);
-  buttons.appendChild(b);
-});
+function renderIdeas(){
+  const wrap=document.getElementById("ideaButtons");
+  wrap.innerHTML="";
+  ideas.forEach(i=>{
+    const b=document.createElement("button");
+    b.textContent=i;
+    b.onclick=()=>buildTemplate(i);
+    wrap.appendChild(b);
+  });
+}
 
 function buildTemplate(name){
-  const template = `// 🪶 ${name} App Template
-function start${name.replace(/\s/g,'')}(){
-  console.log("Starting ${name} App...");
+  const safe=name.replace(/\s/g,'');
+  const code=`// 🪶 ${name} App Template
+function start${safe}(){
+  console.log("Launching ${name} app...");
 }`;
-  showOutput(template);
+  showOutput(code);
 }
 
 function createApp(){
-  const idea = document.getElementById("ideaInput").value || "Untitled App";
+  const idea=document.getElementById("ideaInput").value||"Untitled";
   buildTemplate(idea);
 }
 
 function showOutput(code){
-  document.getElementById("output").style.display='block';
-  document.getElementById("appCode").textContent = code;
+  const o=document.getElementById("output");
+  o.style.display="block";
+  document.getElementById("appCode").textContent=code;
 }
+
+window.addEventListener("DOMContentLoaded",renderIdeas);
