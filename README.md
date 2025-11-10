@@ -11,3 +11,6 @@ Hybrid meta-OS (Rogers + Pewpi vector runtime).
 
 ## Phase-3 Bots and Logic Engine Sun Nov  9 21:39:16 CST 2025
 - Added /bots and /logic modules for AI reasoning.
+
+## Phase-4 Rule Engine Sun Nov  9 21:44:27 CST 2025
+- Added /rules folder for entrainment logic loops.
