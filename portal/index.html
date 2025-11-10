@@ -29,7 +29,7 @@ button:hover,a.btn:hover{background:#7ff;}
   <h3>Need inspiration?</h3>
   <div id="buttons">
     <button id="signalBtn" class="glow">Signal Generator</button>
-    <button id="quantumBtn">Quantum Visualizer</button>
+  <button id="quantumBtn">Quantum Visualizer</button>
     <button id="voiceBtn">Voice Recorder</button>
     <button id="musicBtn">Music Synth</button>
     <button id="coinBtn">Coin Catalog</button>
@@ -46,47 +46,19 @@ button:hover,a.btn:hover{background:#7ff;}
   <pre id="output">// select a template above to begin</pre>
 </div>
 
+
+
+<!-- QV-HANDLER START -->
 <script>
-/* ========= Main Builder ========= */
-const output=document.getElementById("output");
-document.getElementById("build").onclick=()=>{
- const idea=document.getElementById("idea").value.trim();
- output.textContent="// Building new app for: "+idea+
- "\\nfunction startApp(){ console.log('Launching "+idea+"...'); }";
-};
+document.addEventListener('DOMContentLoaded', () => {
+  const s = document.getElementById('signalBtn');
+  if (s) s.onclick = () => { window.location.href = 'signal_generator.html'; };
 
-/* ========= Button Routing ========= */
-function showTemplate(name,code){
- output.textContent="// "+name+" App Template\\n"+code;
-}
-
-// ✅ Working Signal Generator Button (direct link)
-const sig=document.getElementById("signalBtn");
-if(sig){
- sig.addEventListener("click",()=>{
-   window.location.assign("signal_generator.html");
- });
-}
-
-// placeholder templates for the rest
-document.getElementById("quantumBtn").onclick=()=>showTemplate("Quantum Visualizer",
-"function startQuantumVisualizer(){ console.log('Launching Quantum Visualizer app...'); }");
-document.getElementById("voiceBtn").onclick=()=>showTemplate("Voice Recorder",
-"function startVoiceRecorder(){ console.log('Launching Voice Recorder...'); }");
-document.getElementById("musicBtn").onclick=()=>showTemplate("Music Synth",
-"function startMusicSynth(){ console.log('Launching Music Synth...'); }");
-document.getElementById("coinBtn").onclick=()=>showTemplate("Coin Catalog",
-"function startCoinCatalog(){ console.log('Launching Coin Catalog...'); }");
-document.getElementById("marketBtn").onclick=()=>showTemplate("Marketplace Listing",
-"function startMarketplace(){ console.log('Launching Marketplace Listing...'); }");
-document.getElementById("storyBtn").onclick=()=>showTemplate("Story Writer",
-"function startStoryWriter(){ console.log('Launching Story Writer...'); }");
-document.getElementById("gemBtn").onclick=()=>showTemplate("Gemstone Designer",
-"function startGemstoneDesigner(){ console.log('Launching Gemstone Designer...'); }");
-document.getElementById("aiBtn").onclick=()=>showTemplate("AI Chat Bot",
-"function startAIChatBot(){ console.log('Launching AI Chat Bot...'); }");
-document.getElementById("weatherBtn").onclick=()=>showTemplate("Weather Monitor",
-"function startWeatherMonitor(){ console.log('Launching Weather Monitor...'); }");
+  const q = document.getElementById('quantumBtn');
+  if (q) q.onclick = () => { window.location.href = 'quantum_visualizer.html'; };
+});
 </script>
+<!-- QV-HANDLER END -->
+
 </body>
 </html>
